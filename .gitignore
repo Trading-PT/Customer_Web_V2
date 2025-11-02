@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+.env
+.claude
+.gitignore
+analyze_api_docs.py
+api-docs.json
+CLAUDE.local.md
+claude-docs
+
+localhost.pem
+localhost-key.pem
+
+Description 
