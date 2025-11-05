@@ -36,3 +36,5 @@ export const CustomLink: React.FC<LinkProps> = ({
     </Link>
   );
 };
+
+export default CustomLink;

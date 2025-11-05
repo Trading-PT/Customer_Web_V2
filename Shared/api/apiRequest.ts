@@ -1,9 +1,9 @@
-import { Endpoints } from './endpoints';
+// import { Endpoints } from './endpoints';
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export interface ApiRequestConfig<Payload = unknown> {
-  endpoint: Endpoints | string;
+  endpoint: string;
   method?: HttpMethod;
   payload?: Payload;
 }

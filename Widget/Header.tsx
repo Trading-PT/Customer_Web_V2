@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import CustomButton from "../Shared/ui/CustomButton";
+import { useAuthStore } from "../Shared/store/authStore";
 
 // 메뉴 항목 타입 정의
 type MenuItem = {
@@ -39,6 +40,9 @@ const menuItems: MenuItem[] = [
 export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // zustand에서 로그인 상태 가져오기
+  const { isAuthenticated, user } = useAuthStore();
 
   // 헤더를 숨길 경로 목록
   const hiddenRoutes = ["/login", "/register"];
@@ -94,34 +98,69 @@ export function Header() {
             ))}
           </nav>
 
-          {/* 우측 MY PAGE 및 사용자 아이콘 영역 */}
+          {/* 우측 버튼 영역 */}
           <div className="flex items-center gap-4">
-            {/* 로그인 상태에 따라 다른 버튼 표시 */}
-            <Link href="/mypage">
-              <CustomButton
-                variant="normalClean"
-                className="hidden md:inline-flex px-4 py-2 text-sm rounded-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
-              >
-                MY PAGE
-              </CustomButton>
-            </Link>
+            {isAuthenticated ? (
+              <>
+                {/* 로그인 상태: 마이페이지 버튼 및 사용자 아이콘 */}
+                <Link href="/my">
+                  <CustomButton
+                    variant="normalClean"
+                    className="hidden md:inline-flex px-4 py-2 text-sm rounded-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+                  >
+                    마이페이지
+                  </CustomButton>
+                </Link>
 
-            {/* 사용자 아이콘 */}
-            <Link href="/mypage">
-              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
-                <svg
-                  className="w-5 h-5 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </Link>
+                {/* 사용자 아이콘 */}
+                <Link href="/my">
+                  <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
+                    {user?.profileImage ? (
+                      <Image
+                        src={user.profileImage}
+                        alt="프로필"
+                        width={40}
+                        height={40}
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    ) : (
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </Link>
+              </>
+            ) : (
+              <>
+                {/* 비로그인 상태: 회원가입 및 로그인 버튼 */}
+                <Link href="/signup">
+                  <CustomButton
+                    variant="normalClean"
+                    className="hidden md:inline-flex px-4 py-2 text-sm rounded-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+                  >
+                    회원가입
+                  </CustomButton>
+                </Link>
+
+                <Link href="/login">
+                  <CustomButton
+                    variant="normalFull"
+                    className="px-4 py-2 text-sm rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300"
+                  >
+                    로그인
+                  </CustomButton>
+                </Link>
+              </>
+            )}
 
             {/* 모바일 메뉴 버튼 */}
             <button

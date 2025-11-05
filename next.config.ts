@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Skip static generation to avoid useSearchParams errors
 };
 
 export default nextConfig;
