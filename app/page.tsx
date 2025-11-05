@@ -1,7 +1,7 @@
-// 앱 접속 시 /pages/landing으로 redirect 기능만 수행함 
+// 앱 접속 시 3초간 스플래쉬 화면을 보여준 후 /landing으로 이동
 
-import { redirect } from 'next/navigation';
+import { Splash } from '../Widget/Splash';
 
 export default function RootPage() {
-  redirect('/landing');
+  return <Splash />;
 }
