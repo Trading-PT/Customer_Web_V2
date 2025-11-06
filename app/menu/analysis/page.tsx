@@ -74,8 +74,8 @@ export default function AnalysisPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {columns.map((column) => (
                 <div
-                  key={column.id}
-                  onClick={() => handleColumnClick(column.id)}
+                  key={column.columnId}
+                  onClick={() => handleColumnClick(column.columnId)}
                   className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-200"
                 >
                   {/* 썸네일 이미지 */}
