@@ -10,8 +10,8 @@ import AccountInfoSection from './AccountInfoSection';
 import MenuSection from './MenuSection';
 import LogoutSection from './LogoutSection';
 import CustomModal from '../../Shared/ui/CustomModal';
-import CustomButton from '../../Shared/ui/CustomButton';
 import InvestmentTypeChangeModal from './InvestmentTypeChangeModal';
+import ResetPasswordAuthModal from './ResetPasswordAuthModal';
 import type { InvestmentType } from '../../Shared/api/services/investmentTypeChangeService';
 
 type UserData = {
@@ -46,9 +46,8 @@ export default function MyPageSidebar({ userData }: Props) {
   );
 
   // 모달 상태 관리
-  const [openModal, setOpenModal] = useState<null | 'uid' | 'type' | 'password'>(null);
-  const [newPassword, setNewPassword] = useState('');
-  const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
+  const [openModal, setOpenModal] = useState<null | 'uid' | 'type'>(null);
+  const [resetPasswordModalOpen, setResetPasswordModalOpen] = useState(false);
 
   // 로그아웃 / 탈퇴
   const handleLogout = async () => {
@@ -78,15 +77,6 @@ export default function MyPageSidebar({ userData }: Props) {
     }
   };
 
-  const handlePasswordChange = async () => {
-    if (newPassword !== newPasswordConfirm) {
-      alert('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-    // TODO: Implement password change API call
-    alert('비밀번호 변경 기능은 추후 구현 예정입니다.');
-    setOpenModal(null);
-  };
 
   return (
     <aside className="w-full md:w-64 bg-[#0f172a] text-white flex flex-col md:flex-col py-6 md:py-10 relative md:sticky md:top-0">
@@ -97,12 +87,13 @@ export default function MyPageSidebar({ userData }: Props) {
           onChange={handleProfileImageChange}
           uploading={uploading}
           remainingToken={userData.remainingToken}
+          isPremium={userData.isPremium}
         />
 
         <AccountInfoSection email={userData.email} phone={userData.phoneNumber || undefined} />
 
         <MenuSection
-          onPasswordChange={() => setOpenModal('password')}
+          onPasswordChange={() => setResetPasswordModalOpen(true)}
           onUidClick={() => setOpenModal('uid')}
           onTypeChange={() => setOpenModal('type')}
           onCustomerServiceClick={() => router.push('/my/support')}
@@ -112,32 +103,10 @@ export default function MyPageSidebar({ userData }: Props) {
       <LogoutSection onLogout={handleLogout} onWithdraw={handleDeleteUser} />
 
       {/* 비밀번호 변경 모달 */}
-      <CustomModal
-        variant={1}
-        isOpen={openModal === 'password'}
-        onClose={() => setOpenModal(null)}
-      >
-        <h2 className="text-lg mb-4 font-semibold">비밀번호 변경</h2>
-        <div className="space-y-3">
-          <input
-            type="password"
-            placeholder="새 비밀번호"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
-          />
-          <input
-            type="password"
-            placeholder="비밀번호 확인"
-            value={newPasswordConfirm}
-            onChange={(e) => setNewPasswordConfirm(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
-          />
-          <CustomButton variant="prettyFull" onClick={handlePasswordChange}>
-            변경하기
-          </CustomButton>
-        </div>
-      </CustomModal>
+      <ResetPasswordAuthModal
+        isOpen={resetPasswordModalOpen}
+        onClose={() => setResetPasswordModalOpen(false)}
+      />
 
       {/* UID 관리 */}
       <CustomModal variant={1} isOpen={openModal === 'uid'} onClose={() => setOpenModal(null)}>

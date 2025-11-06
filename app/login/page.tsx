@@ -6,6 +6,8 @@ import { useLoginForm } from '../../Features/login/useLoginForm';
 import LoginForm from '../../Features/login/LoginForm';
 import SocialLoginButtons from '../../Features/login/SocialLoginButtons';
 import CustomButton from '../../Shared/ui/CustomButton';
+import FindIdModal from '../../Features/login/FindIdModal';
+import ResetPasswordModal from '../../Features/login/ResetPasswordModal';
 
 export default function LoginPage() {
   const {
@@ -88,7 +90,11 @@ export default function LoginPage() {
         </div>
       </main>
 
-      {/* TODO: FindIdModal, ResetPasswordModal 구현 필요 */}
+      {/* 아이디 찾기 모달 */}
+      <FindIdModal isOpen={findIdModalOpen} onClose={() => setFindIdModalOpen(false)} />
+
+      {/* 비밀번호 재설정 모달 */}
+      <ResetPasswordModal isOpen={resetPasswordModalOpen} onClose={() => setResetPasswordModalOpen(false)} />
     </div>
   );
 }

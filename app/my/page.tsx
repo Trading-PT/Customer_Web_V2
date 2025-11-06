@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Edit, Coins } from 'lucide-react';
+import { Edit, Coins, CreditCard } from 'lucide-react';
 import { useAuthStore } from '../../Shared/store/authStore';
 import MyPageSidebar from '../../Features/mypage/MyPageSidebar';
 import MyPageMain from '../../Features/mypage/MyPageMain';
 import { UserStatus } from '../../Shared/store/authStore';
 import { DEFAULT_MOCK_CONFIG, getMockUserData } from './constants/mockData';
 import CustomModal from '../../Shared/ui/CustomModal';
+import { useNicepayPayment } from '../../Shared/hooks/useNicePayments';
 
 /**
  * 마이페이지
@@ -26,6 +27,7 @@ export default function MyPage() {
   const { user, isAuthenticated, checkAuth } = useAuthStore();
   const [loading, setLoading] = useState(true);
   const [isTokenModalOpen, setIsTokenModalOpen] = useState(false);
+  const { openPayment } = useNicepayPayment();
 
   // Mock Data 사용 여부 확인
   const mockData = getMockUserData(DEFAULT_MOCK_CONFIG);
@@ -110,6 +112,10 @@ export default function MyPage() {
   // 토큰 사용 버튼은 UID_APPROVED 상태에서만 표시
   const shouldShowTokenButton = userStatus === 'UID_APPROVED';
 
+  // 결제하기 버튼은 UID_APPROVED 상태이면서 심사 승인된 경우에만 표시
+  const shouldShowPaymentButton =
+    userStatus === 'UID_APPROVED' && (useMockData ? mockData?.isApproved : true);
+
   // 매매일지 작성 페이지로 이동
   const handleWriteFeedback = () => {
     router.push('/my/feedback-request');
@@ -139,8 +145,19 @@ export default function MyPage() {
       <MyPageMain state={userStatus} />
 
       {/* Fixed 버튼들 - 우측 하단 */}
-      {shouldShowWriteButton && (
+      {(shouldShowWriteButton || shouldShowPaymentButton) && (
         <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-40">
+          {/* 결제하기 버튼 (UID_APPROVED이면서 심사 승인된 경우에만) */}
+          {shouldShowPaymentButton && (
+            <button
+              onClick={openPayment}
+              className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group"
+              aria-label="결제하기"
+            >
+              <CreditCard size={24} />
+            </button>
+          )}
+
           {/* 토큰 사용 매매일지 작성 버튼 (UID_APPROVED 상태에서만) */}
           {shouldShowTokenButton && (
             <button
@@ -153,13 +170,15 @@ export default function MyPage() {
           )}
 
           {/* 일반 매매일지 작성 버튼 */}
-          <button
-            onClick={handleWriteFeedback}
-            className="w-14 h-14 bg-gradient-to-br from-[#B9AB70] to-[#8B7E50] text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group"
-            aria-label="매매일지 작성하기"
-          >
-            <Edit size={24} />
-          </button>
+          {shouldShowWriteButton && (
+            <button
+              onClick={handleWriteFeedback}
+              className="w-14 h-14 bg-gradient-to-br from-[#B9AB70] to-[#8B7E50] text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group"
+              aria-label="매매일지 작성하기"
+            >
+              <Edit size={24} />
+            </button>
+          )}
         </div>
       )}
 

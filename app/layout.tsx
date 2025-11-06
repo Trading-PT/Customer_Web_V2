@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AuthProvider } from "../Shared/providers";
 
@@ -29,6 +30,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>{children}</AuthProvider>
+        {/* NICEPAY 결제 모듈 SDK */}
+        <Script
+          src="https://pg-web.nicepay.co.kr/v3/common/js/nicepay-pgweb.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

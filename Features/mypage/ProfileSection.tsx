@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Coins, User } from 'lucide-react';
+import { Coins, User, Infinity } from 'lucide-react';
 
 interface ProfileSectionProps {
   name: string;
@@ -9,6 +9,7 @@ interface ProfileSectionProps {
   onChange: (file: File) => void;
   uploading: boolean;
   remainingToken?: number;
+  isPremium?: boolean;
 }
 
 /**
@@ -20,6 +21,7 @@ export default function ProfileSection({
   onChange,
   uploading,
   remainingToken,
+  isPremium = false,
 }: ProfileSectionProps) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -72,7 +74,14 @@ export default function ProfileSection({
       {remainingToken !== undefined && (
         <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-[#D2C693] to-[#928346] rounded-full">
           <Coins size={16} className="text-white" />
-          <span className="text-sm font-semibold text-white">{remainingToken}개</span>
+          {isPremium ? (
+            <div className="flex items-center gap-1">
+              <Infinity size={18} className="text-white" />
+              <span className="text-sm font-semibold text-white">무제한</span>
+            </div>
+          ) : (
+            <span className="text-sm font-semibold text-white">{remainingToken}개</span>
+          )}
         </div>
       )}
     </div>

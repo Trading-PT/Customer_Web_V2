@@ -21,6 +21,7 @@ export interface MockUserData {
   isCourseCompleted: boolean;
   isPremium: boolean;
   remainingToken: number;
+  isApproved: boolean; // 심사 승인 여부 (true: 승인됨, false: 승인 안됨)
 }
 
 /**
@@ -42,6 +43,7 @@ export const MOCK_USER_PRESETS: Record<UserStatus, MockUserData> = {
     isCourseCompleted: false,
     isPremium: false,
     remainingToken: 5,
+    isApproved: false,
   },
   UID_REJECTED: {
     name: '김철수',
@@ -58,6 +60,7 @@ export const MOCK_USER_PRESETS: Record<UserStatus, MockUserData> = {
     isCourseCompleted: false,
     isPremium: false,
     remainingToken: 3,
+    isApproved: false,
   },
   UID_APPROVED: {
     name: '이영희',
@@ -74,6 +77,7 @@ export const MOCK_USER_PRESETS: Record<UserStatus, MockUserData> = {
     isCourseCompleted: false,
     isPremium: false,
     remainingToken: 10,
+    isApproved: true,
   },
   PAID_BEFORE_TEST: {
     name: '박민수',
@@ -90,6 +94,7 @@ export const MOCK_USER_PRESETS: Record<UserStatus, MockUserData> = {
     isCourseCompleted: false,
     isPremium: true,
     remainingToken: 15,
+    isApproved: true,
   },
   PAID_AFTER_TEST_TRAINER_ASSIGNING: {
     name: '정수진',
@@ -106,6 +111,7 @@ export const MOCK_USER_PRESETS: Record<UserStatus, MockUserData> = {
     isCourseCompleted: true,
     isPremium: true,
     remainingToken: 20,
+    isApproved: true,
   },
   TRAINER_ASSIGNED: {
     name: '최지훈',
@@ -122,6 +128,7 @@ export const MOCK_USER_PRESETS: Record<UserStatus, MockUserData> = {
     isCourseCompleted: true,
     isPremium: true,
     remainingToken: 25,
+    isApproved: true,
   },
 };
 
