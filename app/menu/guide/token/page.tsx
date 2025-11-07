@@ -38,15 +38,15 @@ export default function TokenGuidePage() {
               TPT 토큰은 전문 트레이너에게 피드백을 요청할 때 사용하는 포인트입니다.
               토큰을 사용하면 프리미엄 서비스를 무료로 이용할 수 있습니다.
             </p>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            {/* <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
               <p className="text-yellow-800">
                 <strong>💡 Tip:</strong> 토큰은 다양한 활동을 통해 무료로 획득할 수 있습니다!
               </p>
-            </div>
+            </div> */}
           </section>
 
           {/* 토큰 획득 방법 */}
-          <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          {/* <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
               <Gift size={28} className="text-green-600" />
               <h2 className="text-2xl font-bold text-gray-900">토큰 획득 방법</h2>
@@ -100,7 +100,7 @@ export default function TokenGuidePage() {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* 토큰 사용 방법 */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
@@ -108,14 +108,14 @@ export default function TokenGuidePage() {
               <TrendingUp size={28} className="text-green-600" />
               <h2 className="text-2xl font-bold text-gray-900">토큰 사용 방법</h2>
             </div>
-            <div className="space-y-6">
+            {/* <div className="space-y-6"> */}
               <div className="border-l-4 border-green-500 pl-4">
-                <h3 className="font-bold text-gray-900 mb-2">일일 피드백 요청 (3 토큰)</h3>
+                <h3 className="font-bold text-gray-900 mb-2">일일 피드백 요청 (1 토큰)</h3>
                 <p className="text-gray-600">
                   오늘 작성한 매매일지에 대해 트레이너의 즉각적인 피드백을 받을 수 있습니다.
                 </p>
               </div>
-              <div className="border-l-4 border-blue-500 pl-4">
+              {/* <div className="border-l-4 border-blue-500 pl-4">
                 <h3 className="font-bold text-gray-900 mb-2">주간 피드백 요청 (5 토큰)</h3>
                 <p className="text-gray-600">
                   이번 주 전체 매매를 종합적으로 분석하고 다음 주 전략을 세울 수 있습니다.
@@ -127,11 +127,11 @@ export default function TokenGuidePage() {
                   한 달간의 트레이딩을 심층 분석하고 장기 전략을 수립할 수 있습니다.
                 </p>
               </div>
-            </div>
+            </div> */}
           </section>
 
           {/* 토큰 사용 팁 */}
-          <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg shadow-sm p-8 mb-8 border border-yellow-200">
+          {/* <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg shadow-sm p-8 mb-8 border border-yellow-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">💡 토큰 절약 팁</h2>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start gap-2">
@@ -151,7 +151,7 @@ export default function TokenGuidePage() {
                 <span>정기 이벤트를 놓치지 말고 보너스 토큰을 챙기세요</span>
               </li>
             </ul>
-          </section>
+          </section> */}
 
           {/* FAQ */}
           <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
@@ -175,17 +175,17 @@ export default function TokenGuidePage() {
                   A. 토큰은 TPT 서비스 내에서만 사용 가능하며 현금 환전은 불가능합니다.
                 </p>
               </div>
-              <div>
+              {/* <div>
                 <h3 className="font-bold text-gray-900 mb-2">Q. 프리미엄 회원도 토큰을 사용하나요?</h3>
                 <p className="text-gray-600">
                   A. 프리미엄 회원은 기본 피드백이 무제한이지만, 추가 서비스에 토큰을 사용할 수 있습니다.
                 </p>
-              </div>
+              </div> */}
             </div>
           </section>
 
           {/* CTA */}
-          <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-8 text-center text-white">
+          {/* <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-4">지금 바로 토큰을 모아보세요</h2>
             <p className="mb-6 text-yellow-100">
               매매일지를 작성하고 토큰을 획득하세요
@@ -196,7 +196,7 @@ export default function TokenGuidePage() {
             >
               피드백 요청하기
             </a>
-          </section>
+          </section> */}
         </div>
       </main>
 

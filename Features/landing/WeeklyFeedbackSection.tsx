@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export function WeeklyFeedbackSection() {
   return (
     <section className="min-h-screen flex items-center bg-gray-50 px-4 py-20">
@@ -16,61 +18,14 @@ export function WeeklyFeedbackSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* 좌측 - 이미지 영역 */}
-          <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">주간 트레이딩 피드백</h3>
-
-            {/* 요약 테이블 */}
-            <div className="overflow-x-auto mb-6">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 px-4 py-2 text-sm">주차</th>
-                    <th className="border border-gray-300 px-4 py-2 text-sm">승률</th>
-                    <th className="border border-gray-300 px-4 py-2 text-sm">손익률</th>
-                    <th className="border border-gray-300 px-4 py-2 text-sm">매매횟수</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-2 text-center text-sm">1주차</td>
-                    <td className="border border-gray-300 px-4 py-2 text-center text-sm text-green-600">65%</td>
-                    <td className="border border-gray-300 px-4 py-2 text-center text-sm text-blue-600">+12.5%</td>
-                    <td className="border border-gray-300 px-4 py-2 text-center text-sm">24회</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 분석 리포트 */}
-            <div className="space-y-6">
-              <div className="border border-gray-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">회원님의 손실 매매 원인 분석</h4>
-                <div className="bg-gray-100 h-32 rounded mb-2 flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">차트 이미지</span>
-                </div>
-                <p className="text-sm text-gray-700">
-                  손실 매매의 주요 원인은 급격한 추세 전환 시점에서의 진입으로 분석됩니다...
-                </p>
-              </div>
-
-              <div className="border border-gray-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">회원님의 수익 매매 원인 분석</h4>
-                <div className="bg-gray-100 h-32 rounded mb-2 flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">차트 이미지</span>
-                </div>
-                <p className="text-sm text-gray-700">
-                  수익 매매는 명확한 지지/저항선 확인 후 진입한 경우가 대부분입니다...
-                </p>
-              </div>
-
-              <div className="border border-gray-200 rounded-lg p-4 bg-blue-50">
-                <h4 className="font-semibold text-gray-900 mb-2">주간 패턴 최종 평가 및 개선점</h4>
-                <p className="text-sm text-gray-700">
-                  이번 주 전반적인 승률은 양호하나, 손절 타이밍이 다소 늦은 경향이 있습니다.
-                  다음 주에는 손절 라인을 명확히 설정하고 지키는 훈련이 필요합니다.
-                </p>
-              </div>
-            </div>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+            <Image
+              src="/images/landing_img_5.png"
+              alt="주간 트레이딩 피드백 UI"
+              width={600}
+              height={900}
+              className="w-full h-auto"
+            />
           </div>
 
           {/* 우측 - 설명 영역 */}

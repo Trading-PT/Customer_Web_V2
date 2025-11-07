@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../../../Widget/Header';
 import { Footer } from '../../../Widget/Footer';
+import ConsultationModal from '../../../Features/mypage/ConsultationModal';
 import { BookOpen, Video, Users, Award, Lock, Play } from 'lucide-react';
 import { useAuthStore } from '../../../Shared/store/authStore';
 
@@ -14,6 +15,7 @@ import { useAuthStore } from '../../../Shared/store/authStore';
 export default function ClassListPage() {
   const { user, isAuthenticated } = useAuthStore();
   const [isPremium, setIsPremium] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   useEffect(() => {
     if (user && user.isPremium) {
@@ -307,7 +309,7 @@ export default function ClassListPage() {
                   프리미엄 플랜
                 </h3>
                 <div className="text-3xl font-bold text-blue-600 mb-4">
-                  월 99,000원
+                  월 260,000원
                 </div>
                 <ul className="space-y-2 text-gray-700 mb-6">
                   <li>• 전체 강의 무제한 수강</li>
@@ -316,7 +318,10 @@ export default function ClassListPage() {
                   <li>• 1:1 화상 상담</li>
                   <li>• 프리미엄 커뮤니티</li>
                 </ul>
-                <button className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                <button
+                  onClick={() => setIsConsultationModalOpen(true)}
+                  className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                >
                   프리미엄 시작하기
                 </button>
               </div>
@@ -324,7 +329,7 @@ export default function ClassListPage() {
           </section>
 
           {/* CTA */}
-          <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-8 text-center text-white">
+          {/* <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-8 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">
               지금 바로 트레이딩 교육을 시작하세요
             </h2>
@@ -337,11 +342,17 @@ export default function ClassListPage() {
             >
               무료로 시작하기
             </a>
-          </section>
+          </section> */}
         </div>
       </main>
 
       <Footer />
+
+      {/* 전화상담 예약 모달 */}
+      <ConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
     </div>
   );
 }

@@ -134,7 +134,7 @@ export default function AnalysisPage() {
           )}
 
           {/* CTA 섹션 */}
-          <section className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-lg p-8 text-center text-white">
+          {/* <section className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-lg p-8 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">
               전문가의 시장 분석을 실시간으로 받아보세요
             </h2>
@@ -147,7 +147,7 @@ export default function AnalysisPage() {
             >
               프리미엄 시작하기
             </a>
-          </section>
+          </section> */}
         </div>
       </main>
 

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export function AutoJournalSection() {
   return (
     <section className="min-h-screen flex items-center bg-white px-4 py-20">
@@ -16,40 +18,14 @@ export function AutoJournalSection() {
           </div>
 
           {/* 이미지 박스 (실제 UI 캡처 이미지 예시) */}
-          <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">날짜:</span>
-                <div className="flex-1 bg-gray-100 h-10 rounded" />
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">종목명:</span>
-                <div className="flex-1 bg-gray-100 h-10 rounded" />
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">포지션:</span>
-                <div className="flex gap-2">
-                  <div className="bg-blue-100 px-4 py-2 rounded">롱</div>
-                  <div className="bg-gray-100 px-4 py-2 rounded">숏</div>
-                </div>
-              </div>
-              <div className="bg-gray-100 h-48 rounded flex items-center justify-center">
-                <p className="text-gray-500">차트 업로드 영역</p>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <span className="text-sm text-gray-600">리스크:</span>
-                  <div className="bg-gray-100 h-10 rounded mt-2" />
-                </div>
-                <div className="flex-1">
-                  <span className="text-sm text-gray-600">레버리지:</span>
-                  <div className="bg-gray-100 h-10 rounded mt-2" />
-                </div>
-              </div>
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                피드백 요청하기
-              </button>
-            </div>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+            <Image
+              src="/images/landing_img_4.png"
+              alt="매매일지 작성 UI"
+              width={600}
+              height={800}
+              className="w-full h-auto"
+            />
           </div>
         </div>
 

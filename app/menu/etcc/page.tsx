@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { Header } from '../../../Widget/Header';
 import { Footer } from '../../../Widget/Footer';
+import ConsultationModal from '../../../Features/mypage/ConsultationModal';
 import { Crown, CheckCircle, Zap, TrendingUp, Users, Star } from 'lucide-react';
 
 /**
@@ -9,6 +11,8 @@ import { Crown, CheckCircle, Zap, TrendingUp, Users, Star } from 'lucide-react';
  * 프리미엄 회원권 상세 정보
  */
 export default function ETCCPage() {
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -158,7 +162,7 @@ export default function ETCCPage() {
                 </h3>
                 <p className="text-gray-600 mb-6">프리미엄 회원</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900">₩99,000</span>
+                  <span className="text-4xl font-bold text-gray-900">₩260,000</span>
                   <span className="text-gray-600">/월</span>
                 </div>
                 <ul className="space-y-3 mb-8">
@@ -191,7 +195,10 @@ export default function ETCCPage() {
                     <span className="text-gray-700 font-semibold">특별 이벤트 초대</span>
                   </li>
                 </ul>
-                <button className="w-full py-3 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600 transition">
+                <button
+                  onClick={() => setIsConsultationModalOpen(true)}
+                  className="w-full py-3 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600 transition"
+                >
                   ETCC 가입하기
                 </button>
               </div>
@@ -208,16 +215,16 @@ export default function ETCCPage() {
                   A. 네, 언제든지 해지 가능하며 위약금은 없습니다. 해지 시 다음 결제일부터 적용됩니다.
                 </p>
               </div>
-              <div className="border-b pb-4">
+              {/* <div className="border-b pb-4">
                 <h3 className="font-bold text-gray-900 mb-2">Q. 환불이 가능한가요?</h3>
                 <p className="text-gray-600">
                   A. 서비스 이용 후 7일 이내에 환불 요청 시 전액 환불 가능합니다.
                 </p>
-              </div>
+              </div> */}
               <div className="border-b pb-4">
                 <h3 className="font-bold text-gray-900 mb-2">Q. 트레이너는 직접 선택할 수 있나요?</h3>
                 <p className="text-gray-600">
-                  A. 레벨 테스트 결과를 바탕으로 최적의 트레이너를 매칭해드리며, 필요 시 변경 요청도 가능합니다.
+                  A. 레벨 테스트 결과를 바탕으로 최적의 트레이너를 매칭해드립니다.
                 </p>
               </div>
               <div>
@@ -230,7 +237,7 @@ export default function ETCCPage() {
           </section>
 
           {/* CTA */}
-          <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-8 md:p-12 text-center text-white">
+          {/* <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-8 md:p-12 text-center text-white">
             <div className="flex justify-center mb-4">
               <Crown size={48} className="text-white" />
             </div>
@@ -254,11 +261,17 @@ export default function ETCCPage() {
                 문의하기
               </a>
             </div>
-          </section>
+          </section> */}
         </div>
       </main>
 
       <Footer />
+
+      {/* 전화상담 예약 모달 */}
+      <ConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
     </div>
   );
 }

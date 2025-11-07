@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import CustomButton from "../../Shared/ui/CustomButton";
 
 export function MarketAnalysisSection() {
@@ -17,50 +18,14 @@ export function MarketAnalysisSection() {
         {/* 중앙 콘텐츠 블록 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
           {/* 좌측 - 시장분석 예시 이미지 */}
-          <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Day Trading Plan</h3>
-            <div className="space-y-4">
-              <div className="flex gap-4 text-sm text-gray-600">
-                <span>날짜: 25.10.23</span>
-                <span>종목: BTC USDT</span>
-              </div>
-
-              {/* 차트 영역 */}
-              <div className="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">비트코인 차트 이미지</span>
-              </div>
-
-              {/* 분석 내용 */}
-              <div className="space-y-3 text-sm">
-                <div className="border-l-4 border-blue-600 pl-3">
-                  <h4 className="font-semibold text-gray-900">차트분석</h4>
-                  <p className="text-gray-700 mt-1">
-                    현재 상승 추세 지속 중이며, 주요 저항선은 $68,000 부근입니다.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-green-600 pl-3">
-                  <h4 className="font-semibold text-gray-900">가능한 트레이딩 전략</h4>
-                  <p className="text-gray-700 mt-1">
-                    $66,500 부근에서 롱 진입, 손절 $65,800, 목표가 $68,200
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-purple-600 pl-3">
-                  <h4 className="font-semibold text-gray-900">시장 상황 브리핑</h4>
-                  <p className="text-gray-700 mt-1">
-                    미국 CPI 발표 전, 변동성 확대 가능성 주의
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-orange-600 pl-3">
-                  <h4 className="font-semibold text-gray-900">전략 전개 가능 조건</h4>
-                  <p className="text-gray-700 mt-1">
-                    거래량 증가와 함께 $66,500 지지 확인 시
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+            <Image
+              src="/images/landing_img_7.png"
+              alt="시장분석 Day Trading Plan UI"
+              width={600}
+              height={800}
+              className="w-full h-auto"
+            />
           </div>
 
           {/* 우측 - 설명 텍스트 */}

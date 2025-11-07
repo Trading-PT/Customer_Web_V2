@@ -128,7 +128,7 @@ export function Header() {
                 {/* 사용자 아이콘 */}
                 <Link href="/my">
                   <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
-                    {user?.profileImage ? (
+                    {user?.profileImage && user.profileImage.trim() !== "" ? (
                       <Image
                         src={user.profileImage}
                         alt="프로필"

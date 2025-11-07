@@ -74,14 +74,14 @@ export default function UIDApproved() {
         </div>
       )}
 
-      <div className="flex gap-3">
+      {/* <div className="flex gap-3">
         <CustomButton variant="prettyFull" onClick={() => router.push('/my')}>
           상담 예약하기
         </CustomButton>
         <CustomButton variant="normalClean" onClick={() => router.push('/payment')}>
           멤버십 구매
         </CustomButton>
-      </div>
+      </div> */}
     </div>
   );
 }

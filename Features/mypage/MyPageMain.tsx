@@ -65,6 +65,19 @@ export default function MyPageMain({ state }: Props) {
       <div className="max-w-2xl mx-auto text-center gap-5">
         {renderMainContent()}
 
+        {/* 상담 예약 버튼 - 캘린더를 보여주는 상태에서만 표시 */}
+        {shouldShowCalendar && (
+          <div className="mt-10">
+            <button
+              onClick={() => setIsConsultationModalOpen(true)}
+              className="w-full max-w-md mx-auto flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all font-semibold"
+            >
+              <Phone size={24} />
+              <span>전화 상담 예약하기</span>
+            </button>
+          </div>
+        )}
+
         {/* 캘린더 컴포넌트 - UID_APPROVED, PAID_BEFORE_TEST, PAID_AFTER_TEST_TRAINER_ASSIGNING, TRAINER_ASSIGNED 상태에서만 표시 */}
         {shouldShowCalendar && (
           <div className="mt-10">
@@ -79,18 +92,7 @@ export default function MyPageMain({ state }: Props) {
           </div>
         )}
 
-        {/* 상담 예약 버튼 - 캘린더를 보여주는 상태에서만 표시 */}
-        {shouldShowCalendar && (
-          <div className="mt-10">
-            <button
-              onClick={() => setIsConsultationModalOpen(true)}
-              className="w-full max-w-md mx-auto flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all font-semibold"
-            >
-              <Phone size={24} />
-              <span>전화 상담 예약하기</span>
-            </button>
-          </div>
-        )}
+        
 
         {/* UID 승인 이후에만 보임 */}
         <StatusWrapper

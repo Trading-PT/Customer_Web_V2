@@ -146,7 +146,7 @@ export default function InsightPage() {
           )}
 
           {/* CTA 섹션 */}
-          <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-8 text-center text-white">
+          {/* <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-8 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">
               더 많은 인사이트를 받아보고 싶으신가요?
             </h2>
@@ -159,7 +159,7 @@ export default function InsightPage() {
             >
               프리미엄 시작하기
             </a>
-          </section>
+          </section> */}
         </div>
       </main>
 

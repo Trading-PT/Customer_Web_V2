@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export function IntroSection() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-white px-4 py-20">
@@ -36,9 +38,15 @@ export function IntroSection() {
         {[1, 2, 3].map((i) => (
           <div
             key={i}
-            className="bg-gray-100 rounded-lg h-64 flex items-center justify-center hover:scale-105 transition-transform shadow-md"
+            className="bg-gray-100 rounded-lg overflow-hidden hover:scale-105 transition-transform shadow-md"
           >
-            <p className="text-gray-500">트레이딩 예시 이미지 {i}</p>
+            <Image
+              src={`/images/landing_img_${i}.png`}
+              alt={`트레이딩 예시 이미지 ${i}`}
+              width={400}
+              height={300}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
       </div>
